@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group 'com.gaetandev.elderanalytics'
+version = '1.0-SNAPSHOT'
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
+    maven { url 'https://jitpack.io' }
+
+    maven { url ' https://mvnrepository.com/artifact/org.yaml/snakeyaml' }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
+
+    compileOnly group: 'net.md-5', name: 'bungeecord-api', version: '1.16-R0.3'
+}
+
+shadowJar {
+    relocate "org.yaml.snakeyaml", "com.gaetandev.elderanalytics.api.snakeyaml"
+}
+
+test {
+    useJUnitPlatform()
+}
+
+build.dependsOn shadowJar

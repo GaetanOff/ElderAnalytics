@@ -1,0 +1,4 @@
+name: ElderAnalytics
+author: GaetanOff
+version: 1.0-SNAPSHOT
+main: com.gaetandev.elderanalytics.ElderAnalytics
