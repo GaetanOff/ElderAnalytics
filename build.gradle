@@ -23,7 +23,9 @@ dependencies {
 
     implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
 
-    compileOnly group: 'net.md-5', name: 'bungeecord-api', version: '1.16-R0.3'
+    compileOnly('net.md-5:bungeecord-api:1.16-R0.3') {
+        exclude group: 'net.md-5', module: 'brigadier'
+    }
 }
 
 shadowJar {
