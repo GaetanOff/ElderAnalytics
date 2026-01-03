@@ -1,6 +1,7 @@
 package com.gaetandev.elderanalytics.manager;
 
 import com.gaetandev.elderanalytics.ElderAnalytics;
+import com.gaetandev.elderanalytics.manager.managers.ConfigManager;
 import com.gaetandev.elderanalytics.manager.managers.DataManager;
 import com.gaetandev.elderanalytics.manager.managers.SaveManager;
 import com.gaetandev.elderanalytics.manager.managers.ThreadManager;
@@ -8,6 +9,7 @@ import com.gaetandev.elderanalytics.manager.managers.ThreadManager;
 public class ManagerHandler {
     private ElderAnalytics elderAnalytics;
 
+    private ConfigManager configManager;
     private ThreadManager threadManager;
     private DataManager dataManager;
     private SaveManager saveManager;
@@ -16,6 +18,7 @@ public class ManagerHandler {
         this.elderAnalytics = elderAnalytics;
 
         // Initialize all managers
+        configManager = new ConfigManager(this);
         threadManager = new ThreadManager(this);
         dataManager = new DataManager(this);
         saveManager = new SaveManager(this);
@@ -40,5 +43,9 @@ public class ManagerHandler {
 
     public ElderAnalytics getElderAnalytics() {
         return elderAnalytics;
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
     }
 }
